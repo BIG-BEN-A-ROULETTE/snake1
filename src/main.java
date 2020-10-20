@@ -74,7 +74,7 @@ class Main extends JPanel {                                                     
                 while (true) {
                     repaint();
                     try {
-                        Thread.sleep(1000 / 100);                                 //60 FPS
+                        Thread.sleep(10000 / 1000);                                 //60 FPS
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -83,6 +83,18 @@ class Main extends JPanel {                                                     
         }).start();
     }
 
+    /*public void bot(){                                  //implementer une class bot qui tue le snake a la tete.
+                                                        // implementer une autre class pour creer : bot.
+    bot.x = rand.nextInt(12);
+    bot.y = rand.nextInt(12);
+     for (snakePart p : snake){
+          if (p.x == bot.x && p.y == bot.y){
+        gameLost();
+         }
+        }
+
+    }
+    */
     public void creatApple(){
         boolean positionAviable;
         do {
@@ -106,7 +118,7 @@ class Main extends JPanel {                                                     
         if (gameLost){
             g.setColor(Color.cyan);
             g.setFont(new Font("Arial",90,90));
-            g.drawString("t es trop nul <3",13*50/2 - g.getFontMetrics().stringWidth("t es trop nul <3")/2,13*50/2);
+            g.drawString("t'es trop nul <3",13*50/2 - g.getFontMetrics().stringWidth("t'es trop nul <3")/2,13*50/2);
             return;
         }
         offset+=10;                                                                             // vitess snake /50
@@ -152,8 +164,8 @@ class Main extends JPanel {                                                     
             }
         }
 
-        g.setColor(Color.blue);
-        g.drawString("Score :" + (snake.size() -1 ),10,20 );
+        g.setColor(Color.blue);                                                             //affichage du score
+        g.drawString("Score :" + (snake.size() - 1 ),10,20 );
     }
 
     public void onkeyPressed(int keycode){
@@ -175,7 +187,7 @@ class Main extends JPanel {                                                     
 
         public void move(){
             if (direction == 37 || direction == 39){
-                x+= (direction == 37) ? -1 : 1;
+                x += (direction == 37) ? - 1 : 1;
                 if (x > 13)
                     x = -1;
                 else if (x < -1)
